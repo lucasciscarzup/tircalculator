@@ -12,9 +12,11 @@ service CalculatorService {
 }
 
 message CalculatorRequest {
-  string name = 1;
+  double cashFlow = 1;
+  double initialInvestment = 2;
+  int32 year = 3;
 }
 
 message CalculatorReply {
-  string message = 1;
+  double value = 1;
 }

@@ -1,8 +1,14 @@
-import com.google.protobuf.gradle.*
+import com.google.protobuf.gradle.generateProtoTasks
+import com.google.protobuf.gradle.id
+import com.google.protobuf.gradle.ofSourceSet
+import com.google.protobuf.gradle.plugins
+import com.google.protobuf.gradle.protobuf
+import com.google.protobuf.gradle.protoc
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
     id("org.jetbrains.kotlin.kapt") version "1.4.10"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.4.10"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.4.21"
     id("com.github.johnrengelman.shadow") version "6.1.0"
     id("io.micronaut.application") version "1.2.0"
     id("com.google.protobuf") version "0.8.13"
@@ -26,6 +32,8 @@ micronaut {
 }
 
 dependencies {
+    annotationProcessor("io.micronaut.data:micronaut-data-processor:2.2.1")
+
     implementation("io.micronaut:micronaut-validation")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
@@ -34,8 +42,13 @@ dependencies {
     implementation("io.micronaut.grpc:micronaut-grpc-runtime")
     implementation("javax.annotation:javax.annotation-api")
     implementation("io.grpc:grpc-kotlin-stub:1.0.0")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa:2.2.1")
+
+    runtimeOnly("io.micronaut.sql:micronaut-jdbc-hikari")
+    runtimeOnly("com.h2database:h2")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
