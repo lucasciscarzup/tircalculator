@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.test";
+option java_outer_classname = "Tircalculator";
+option objc_class_prefix = "HLW";
+
+package br.com.test;
+
+service CalculatorService {
+  rpc calculate (CalculatorRequest) returns (CalculatorReply) {}
+}
+
+message CalculatorRequest {
+  string name = 1;
+}
+
+message CalculatorReply {
+  string message = 1;
+}
