@@ -8,15 +8,13 @@ option objc_class_prefix = "HLW";
 package br.com.test;
 
 service CalculatorService {
-  rpc calculate (CalculatorRequest) returns (CalculatorReply) {}
+  rpc Calculate (CalculatorRequest) returns (CalculatorReply) {}
 }
 
 message CalculatorRequest {
-  double cashFlow = 1;
-  double initialInvestment = 2;
-  int32 year = 3;
+  repeated double cashFlow = 1;
 }
 
 message CalculatorReply {
-  double value = 1;
+  double result = 1;
 }
