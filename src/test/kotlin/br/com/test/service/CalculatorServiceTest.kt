@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import javax.inject.Inject
 
+
 @MicronautTest
 class CalculatorServiceTest {
 
@@ -17,14 +18,10 @@ class CalculatorServiceTest {
     fun testCalculatorService() {
         val request: CalculatorRequest = CalculatorRequest.newBuilder()
             .addCashFlow(-500.0)
-            .addCashFlow(200.0)
             .addCashFlow(300.0)
-            .addCashFlow(400.0)
             .build()
+        val result = blockingStub.calculate(request).result
 
-        Assertions.assertEquals(
-            0.3169080407721607,
-            blockingStub.calculate(request).result
-        )
+        Assertions.assertEquals(-0.39999999999999997, result)
     }
 }

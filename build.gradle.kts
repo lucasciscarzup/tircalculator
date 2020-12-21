@@ -45,11 +45,13 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa:2.2.1")
 
     runtimeOnly("io.micronaut.sql:micronaut-jdbc-hikari")
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("io.mockk:mockk:1.10.3-jdk8")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
 }
 
 
