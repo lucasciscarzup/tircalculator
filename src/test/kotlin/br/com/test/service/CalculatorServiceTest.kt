@@ -17,11 +17,11 @@ class CalculatorServiceTest {
     @Test
     fun testCalculatorService() {
         val request: CalculatorRequest = CalculatorRequest.newBuilder()
-            .addCashFlow(-500.0)
-            .addCashFlow(300.0)
+            .addCashFlow("-500.0")
+            .addCashFlow("300.0")
             .build()
-        val result = blockingStub.calculate(request).result
+        val result = blockingStub.calculate(request).result.toString()
 
-        Assertions.assertEquals(-0.39999999999999997, result)
+        Assertions.assertEquals("-0.4000", result)
     }
 }

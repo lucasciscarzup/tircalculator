@@ -20,6 +20,6 @@ class CalculatorService: CalculatorServiceGrpcKt.CalculatorServiceCoroutineImplB
         tir.calculate()
         tirRepository.save(tir)
 
-        return CalculatorReply.newBuilder().setResult(tir.result).build()
+        return CalculatorReply.newBuilder().setResult(tir.result.toString()).build()
     }
 }
