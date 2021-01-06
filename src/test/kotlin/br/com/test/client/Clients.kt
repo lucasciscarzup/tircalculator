@@ -11,10 +11,8 @@ import io.micronaut.grpc.server.GrpcServerChannel
 class Clients {
 
     @Bean
-    fun blockingStub(
-        @GrpcChannel(GrpcServerChannel.NAME)
-        channel: ManagedChannel
-    ): CalculatorServiceGrpc.CalculatorServiceBlockingStub {
+    fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel):
+            CalculatorServiceGrpc.CalculatorServiceBlockingStub {
         return CalculatorServiceGrpc.newBlockingStub(channel)
     }
 }

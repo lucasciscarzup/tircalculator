@@ -12,9 +12,9 @@ service CalculatorService {
 }
 
 message CalculatorRequest {
-  repeated string cashFlow = 1;
+  repeated double cashFlow = 1;
 }
 
 message CalculatorReply {
-  string result = 1;
+  double result = 1;
 }

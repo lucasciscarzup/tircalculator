@@ -15,11 +15,11 @@ class CalculatorService: CalculatorServiceGrpcKt.CalculatorServiceCoroutineImplB
     @Inject
     lateinit var tirRepository: TirRepository
 
-    override suspend fun calculate(request: CalculatorRequest, ): CalculatorReply {
+    override suspend fun calculate(request: CalculatorRequest): CalculatorReply {
         val tir = Tir.fromProto(request)
         tir.calculate()
         tirRepository.save(tir)
 
-        return CalculatorReply.newBuilder().setResult(tir.result.toString()).build()
+        return CalculatorReply.newBuilder().setResult(tir.result).build()
     }
 }
